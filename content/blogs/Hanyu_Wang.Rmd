@@ -1,0 +1,311 @@
+---
+categories:
+- ""
+- ""
+date: "2017-10-31T22:42:51-05:00"
+description: Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna
+  sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa
+  sed magna lacinia magna pellentesque lorem ipsum dolor. Nullam et orci eu lorem
+  consequat tincidunt. Vivamus et sagittis tempus.
+draft: false
+image: pic07.jpg
+keywords: ""
+slug: hanyuwang
+title: My work
+---
+```{r load-libraries, warning=FALSE, message=FALSE, echo=FALSE}
+library(tidyverse) 
+library(gapminder)  
+library(here)
+library(janitor)
+```
+
+The goal is to test your software installation, to demonstrate competency in Markdown, and in the basics of `ggplot`.
+
+# Task 1:  A Biography About me
+
+Hi there, my name is Hanyu Wang (*Hovik*). I graduated with a Bachelor of Science degree from *The University of Nottingham* and am now a student  of MAM program at the *London Business School*. In the past few years, I have had the following practical experience:
+
+* Interned as an **Operations Analyst** for China's top 2 Internet companies and Fortune 500 company *Tencent*;
+* Interned as the **Product Manager** of *NetEase*, the top 10 Internet company in China;
+* Interned as a **Strategic Product Manager** in the international technology unicorn company *DiDi*;
+* Founded a technology start-up *AllLink Ltd.* and served as **COO**.
+
+If you want to know more about me, you can contact me at [My LinkedIn](https://www.linkedin.com/in/hanyuwangmam2022/);
+You can also get to know me through this [billigual interview](https://mp.weixin.qq.com/s/AL-zTh7pdJTtFPLabYSLBw) from *Nottingham University Business School*.
+
+Click [here](https://ibb.co/TgtLZDf) to check my photo.
+
+
+# Task 2: `gapminder` country comparison
+
+Use the `glimpse` function and have a look at the first 20 rows of data in the `gapminder` dataset.
+
+```{r}
+glimpse(gapminder)
+
+head(gapminder, 20) # look at the first 20 rows of the dataframe
+
+```
+
+Create the `country_data` and `continent_data` with the code below.
+
+```{r}
+country_data <- gapminder %>% 
+            filter(country == "China") 
+
+continent_data <- gapminder %>% 
+            filter(continent == "Asia")
+```
+
+First, create a plot of life expectancy over time for China. Map `year` on the x-axis, and `lifeExp` on the y-axis. Use `geom_point()` to see the actual data points and `geom_smooth(se = FALSE)` to plot the underlying trendlines. 
+
+```{r, lifeExp_one_country}
+plot1 <- ggplot(data = country_data, mapping = aes(x = year, y = lifeExp))+
+   geom_point() +
+   geom_smooth(se = FALSE) +
+   NULL 
+
+plot1
+```
+
+Next, Add a title. Create a new plot, or extend plot1, using the `labs()` function to add an informative title to the plot.
+
+```{r, lifeExp_one_country_with_label}
+plot1<- plot1 +
+  labs(title = "Trends in China's life expectancy from 1950s",
+      x = "Year",
+      y = "Life expenctancy") +
+      NULL
+
+plot1
+```
+
+Secondly, produce a plot for all countries in the Asia.
+
+```{r lifeExp_one_continent}
+ggplot(continent_data, mapping = aes(x = year, y = lifeExp , colour= country, group = country))+
+  geom_point() + 
+  geom_smooth(se = FALSE) +
+  NULL
+```
+
+Finally, using the original `gapminder` data, produce a life expectancy over time graph, grouped (or faceted) by continent. Remove all legends, adding the `theme(legend.position="none")` in the end of our ggplot.
+
+```{r lifeExp_facet_by_continent}
+ggplot(data = gapminder , mapping = aes(x = year , y = lifeExp , colour= continent))+
+  geom_point() + 
+  geom_smooth(se = FALSE) +
+  facet_wrap(~continent) +
+  theme(legend.position="none") + 
+  NULL
+```
+
+## Brief conclusions about life expectancy
+
+From the above graphs, we can draw some conclusions about life expectancy: 
+
+* As far as **China** is concerned, life expectancy has continued to increase since 1952 and nearly doubled in 50 years. Economic development and medical technology improvement can Considered as a potential cause; 
+* As far as **Asia** is concerned, almost all Asian countries have had a significant increase in life expectancy due to economic development since 1952, and life expectancy in only a few countries fluctuated between 1970 and 1980; 
+* When observing at life expectancy from the continental dimension **in the world**, due to the slowdown in economic development, life expectancy in Europe and Oceania has stabilized and slightly increased; in Asia and the Americas, which are still developing rapidly, life expectancy has increased significantly; in Africa, where economic and medical standards are stagnant, there has even been a downward trend of life expectancy in recent decades.
+
+# Task 3: Brexit vote analysis
+
+First we read the data using `read_csv()` and have a quick glimpse at the data
+
+```{r load_brexit_data, warning=FALSE, message=FALSE}
+brexit_results <- read_csv(here::here("~/Desktop/MAM assessment/fold/my_website","brexit_results.csv"))
+
+glimpse(brexit_results)
+```
+
+To get a sense of the spread, or distribution, of the data, Plot a histogram, a density plot, and the empirical cumulative distribution function of the leave % in all constituencies.
+
+```{r brexit_histogram, warning=FALSE, message=FALSE}
+
+# histogram
+ggplot(brexit_results, aes(x = leave_share)) +
+  geom_histogram(binwidth = 2.5) +
+  labs(title = "Histogram of Brexit preference rate distribution",
+    x = "preference rate for Brexit",
+    y = "Count")
+
+# density plot-- think smoothed histogram
+ggplot(brexit_results, aes(x = leave_share)) +
+  geom_density() +
+  labs(title = "Density plot of Brexit preference rate distribution",
+    x = "preference rate for Brexit",
+    y = "Density")
+
+
+# The empirical cumulative distribution function (ECDF) 
+ggplot(brexit_results, aes(x = leave_share)) +
+  stat_ecdf(geom = "step", pad = FALSE) +
+  scale_y_continuous(labels = scales::percent) +
+  labs(title = "Empirical cumulative distribution of Brexit preference rate",
+    x = "preference rate for Brexit",
+    y = "Cumulative distribution")
+  
+```
+
+One common explanation for the Brexit outcome was fear of immigration and opposition to the EU's more open border policy. We can check the relationship (or correlation) between the proportion of native born residents (`born_in_uk`) in a constituency and its `leave_share`. To do this, get the correlation between the two variables
+
+```{r brexit_immigration_correlation}
+brexit_results %>% 
+  select(leave_share, born_in_uk) %>% 
+  cor()
+```
+
+The correlation is almost 0.5, which shows that the two variables are positively correlated.
+
+Create a scatterplot between these two variables using `geom_point`. We also add the best fit line, using `geom_smooth(method = "lm")`.
+
+```{r brexit_immigration_plot}
+ggplot(brexit_results, aes(x = born_in_uk, y = leave_share)) +
+  geom_point(alpha=0.3) +
+  geom_smooth(method = "lm") + 
+  theme_bw() +
+  labs(title = "The relationship between proportion of native born residents and Brexit preference rate",
+    x = "Proportion of native born residents",
+    y = "Brexit preference rate") +
+    NULL
+
+```
+
+## Brief conclusions about Brexit vote analysis
+
+According to the image, firstly, we can draw a preliminary description of the Brexit preference rate:
+
+* The Brexit preference rate of each parliament constituency in the UK is concentrated in **50%-70%**；
+* The distribution represents **left-skewed**, more people in the UK agree with Brexit.
+
+In order to verify the impact of opposition to the EU’s open border policy on the prefernce rate for Brexit, we analyzed The relationship between proportion of native born residents and Brexit preference rate. Then we found:
+
+* Most parliament constituency has a high proportion of native born residents, and it is concentrated in **90%-100%**, Their support for Brexit remains at about **50%-65%**.
+* There is a **positive correlation** between the proportion of local-born residents and the Brexit preference rate. The higher the proportion of locally-born residents, the more supportive the place is for Brexit.
+
+From the above data, we can preliminarily conclude that **the proportion of British-born residents has increased the preference rate for Brexit to a certain extent**. The reason may lie in the opposition and resistance of these residents to the EU’s openning policy and immigration. They chose to support Brexit out of the protection of their own interests and the psychology of controlling the migrant population in their places of residence.
+
+
+# Task 4: Animal rescue incidents attended by the London Fire Brigade
+
+
+```{r load_animal_rescue_data, message=FALSE, warning=FALSE}
+
+
+animal_rescue <- read_csv("Animal.csv",
+                          locale = locale(encoding = "CP1252")) %>% 
+  janitor::clean_names()
+
+glimpse(animal_rescue)
+```
+
+Quick counts, namely to see how many observations fall within one category.
+
+```{r, instances_by_calendar_year}
+
+# Method 1
+animal_rescue %>% 
+  dplyr::group_by(cal_year) %>% 
+  summarise(count=n())
+
+# Method 2
+animal_rescue %>% 
+  count(cal_year, name="count")
+
+```
+
+See how many incidents we have by animal group. 
+
+```{r, animal_group_percentages}
+
+# Method 1
+animal_rescue %>% 
+  group_by(animal_group_parent) %>% 
+  summarise(count = n()) %>% 
+  mutate(percent = round(100*count/sum(count),2)) %>% 
+  arrange(desc(percent))
+
+# Method 2
+animal_rescue %>% 
+  count(animal_group_parent, name="count", sort=TRUE) %>% 
+  mutate(percent = round(100*count/sum(count),2))
+
+
+```
+
+In these tables, however, what is strange is that 'Cat' and 'cat' are counted as different species.
+
+## Calculate the mean and median of incident costs
+
+Fix `incident_notional_cost` as it is stored as a `chr`, or character, rather than a number.
+
+```{r, parse_incident_cost,message=FALSE, warning=FALSE}
+
+typeof(animal_rescue$incident_notional_cost)
+animal_rescue <- animal_rescue %>% 
+  mutate(incident_notional_cost = parse_number(incident_notional_cost))
+typeof(animal_rescue$incident_notional_cost)
+
+```
+
+Calculate summary statistics for each animal group. 
+
+```{r, stats_on_incident_cost,message=FALSE, warning=FALSE}
+
+animal_rescue %>% 
+  group_by(animal_group_parent) %>% 
+  filter(n()>6) %>% 
+  summarise(mean_incident_cost = mean (incident_notional_cost, na.rm=TRUE),
+            median_incident_cost = median (incident_notional_cost, na.rm=TRUE),
+            sd_incident_cost = sd (incident_notional_cost, na.rm=TRUE),
+            min_incident_cost = min (incident_notional_cost, na.rm=TRUE),
+            max_incident_cost = max (incident_notional_cost, na.rm=TRUE),
+            count = n()) %>% 
+  arrange(desc(mean_incident_cost))
+
+```
+
+### Brief analysis about incident group
+
+From the table, we can find that in this data set, the means of incident costs are always greater than the medians for most animal groups. Therefore, this may be a right-skewed distribution, which means there are more high incident costs in each animal group to affect the distribution. Among these animal groups, the gap in the mean and median of species such as horses and cows is particularly prominent, indicating that the high values of incident costs have greatly affected the distribution. However,there are also some outliers in the data set. For example, the mean values of squirrels, Ferret and rabbits are all lower than the median, indicating that in these three animal groups, the smaller value accounts for a larger proportion.
+
+## Plot the distribution of incident costs by animal group
+
+```{r, plots_on_incident_cost_by_animal_group,message=FALSE, warning=FALSE}
+
+# base_plot
+base_plot <- animal_rescue %>% 
+  group_by(animal_group_parent) %>% 
+  filter(n()>6) %>% 
+  ggplot(aes(x=incident_notional_cost))+
+  facet_wrap(~animal_group_parent, scales = "free")+
+  theme_bw()
+
+base_plot + geom_histogram()
+base_plot + geom_density()
+base_plot + geom_boxplot()
+base_plot + stat_ecdf(geom = "step", pad = FALSE) +
+  scale_y_continuous(labels = scales::percent)
+
+```
+
+### Brief comparison and conclusion about incident group plots
+
+Among the four plots, the **box plot** can best reflect the variability of this variable. Compared with the other three presentation methods, it can accurately and intuitively depict the discrete distribution of data and the magnitude of change, and identify outliers.
+
+At the same time, we can also draw some conclusions from these images:
+
+* Animals such as horses and cows often need to spend more to rescue. This may be because compared to other animals, the search and rescue of these large animals is more difficult, the requirements for supporting equipment are higher, and there are fewer rescue personnel with relevant professional skills, leading to higher accident costs.
+
+* For some small animals, such as rabbits, squirrels, and ferrets, often have greater variability in the incident costs. On the one hand, this may because the sub-categories of these species are quite different; On the other hand, because the habitats of these animals are often vary, resulting in differences in the difficulty and cost of search and rescue.
+
+# Submit the assignment
+
+Knit the completed R Markdown file as an HTML document (use the "Knit" button at the top of the script editor window) and upload it to Canvas.
+
+## Details
+
+-   Who did you collaborate with: No one, finish it by myself
+-   Approximately how much time did you spend on this problem set: 4 hours
+-   What, if anything, gave you the most trouble: Understand each line of codes of Task 4

@@ -81,9 +81,9 @@ params:
     enable: yes
     showcase:
       - image: pic01.jpg
-        subtitle: Contact me on LinkedIn
-        title: Profile
-        url: blogs/aliquam
+        subtitle: Some work
+        title: My work
+        url: blogs/hanyuwang
       - image: pic02.jpg
         subtitle: Billingual interview about my UG Career
         title: My Story
