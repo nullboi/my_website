@@ -9,7 +9,7 @@ params:
     buttonText: Get Started
     subtitle: |-
       DEVELOP MYSELF AS A PRODUCT.
-    title: Hi, I am Hanyu(Hovik) Wang, a MAM2022 student of London Business School
+    title: Hi, I am Hovik Wang!
   blog: {}
   contact:
     address:
@@ -80,38 +80,38 @@ params:
   tiles:
     enable: yes
     showcase:
-      - image: pic01.jpg
-        subtitle: Some work
+      - image: pic09.jpg
+        subtitle: Pre-program coursework
         title: My work
         url: blogs/hanyuwang
-      - image: pic02.jpg
+      - image: self.jpeg
         subtitle: Billingual interview about my UG Career
-        title: My Story
+        title: Know more about Me
         url: https://mp.weixin.qq.com/s/AL-zTh7pdJTtFPLabYSLBw
-      - image: pic03.jpg
+      - image: beer.jpg
         subtitle: Get to know my daily life
         title: Instagram
         url: https://www.instagram.com/nullboi_/
-      - image: pic04.jpg
+      - image: pic08.jpg
         subtitle: Contact me on Github
         title: Technology communication
         url: https://www.github.com/nullboi
-      - image: pic05.jpg
-        subtitle: Follow me soon
-        title: Twitter
-        url: https://www.twitter.com/Nullboi2
-      - image: pic06.jpg
+      - image: LBS.jpeg
         subtitle: Walk around London business school
         title: My campus
         url: http://london.edu
-  two:
-    buttonText: Get Started
-    enable: yes
-    subtitle: "Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero.
-      \n    Mauris aliquet magna magna sed nunc rhoncus pharetra. \n    Pellentesque
-      condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia
-      pellentesque lorem ipsum dolor. \n    Nullam et orci eu lorem consequat tincidunt.
-      Vivamus et sagittis libero.\n    Mauris aliquet magna magna sed nunc rhoncus
-      amet pharetra et feugiat tempus."
-    title: Massa libero
-    url: blogs
+      - image: tie.jpg
+        #subtitle: 
+        title: Resume
+        url: blogs/HanyuWang_resume.pdf
+  #two:
+    #buttonText: Get Started
+    #enable: yes
+    #subtitle: "Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero.
+      #\n    Mauris aliquet magna magna sed nunc rhoncus pharetra. \n    Pellentesque
+      #condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia
+      #pellentesque lorem ipsum dolor. \n    Nullam et orci eu lorem consequat tincidunt.
+      #Vivamus et sagittis libero.\n    Mauris aliquet magna magna sed nunc rhoncus
+      #amet pharetra et feugiat tempus."
+    #title: Massa libero
+    #url: blogs
