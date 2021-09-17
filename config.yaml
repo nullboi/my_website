@@ -9,7 +9,7 @@ params:
     buttonText: Get Started
     subtitle: |-
       DEVELOP MYSELF AS A PRODUCT.
-    title: Hi, I am Hovik Wang!
+    title: Hi, I'm 王涵宇. Just call me Hovik :)
   blog: {}
   contact:
     address:
@@ -80,18 +80,22 @@ params:
   tiles:
     enable: yes
     showcase:
-      - image: pic09.jpg
-        subtitle: Pre-program coursework
-        title: My work
-        url: blogs/hanyuwang
       - image: self.jpeg
         subtitle: Billingual interview about my UG Career
         title: Know more about Me
         url: https://mp.weixin.qq.com/s/AL-zTh7pdJTtFPLabYSLBw
+      - image: tie.jpg
+        subtitle: Build up our career contacts
+        title: Resume
+        url: blogs/HanyuWang_resume.pdf
+      - image: pic09.jpg
+        subtitle: Pre-program coursework
+        title: My work
+        url: blogs/hanyuwang
       - image: beer.jpg
-        subtitle: Get to know my daily life
-        title: Instagram
-        url: https://www.instagram.com/nullboi_/
+        subtitle: First chanllenge
+        title: First R Group Project
+        url: blogs/hwfirst
       - image: pic08.jpg
         subtitle: Contact me on Github
         title: Technology communication
@@ -100,10 +104,7 @@ params:
         subtitle: Walk around London business school
         title: My campus
         url: http://london.edu
-      - image: tie.jpg
-        #subtitle: 
-        title: Resume
-        url: blogs/HanyuWang_resume.pdf
+
   #two:
     #buttonText: Get Started
     #enable: yes
