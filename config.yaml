@@ -81,9 +81,9 @@ params:
     enable: yes
     showcase:
       - image: self.jpeg
-        subtitle: Billingual interview about my UG Career
+        subtitle: do click in to see some surprise
         title: Know more about Me
-        url: https://mp.weixin.qq.com/s/AL-zTh7pdJTtFPLabYSLBw
+        url: blogs/self
       - image: tie.jpg
         subtitle: Build up our career contacts
         title: Resume

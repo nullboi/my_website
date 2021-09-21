@@ -1,0 +1,39 @@
+---
+categories:
+- ""
+- ""
+date: "2017-10-31T21:28:43-05:00"
+description: ""
+draft: false
+#image: pic10.jpg
+keywords: ""
+slug: self
+title: self-introduction
+---
+
+# A Biography About me
+
+Hi there, my name is Hanyu Wang (*Hovik*). I graduated with a Bachelor of Science degree from *The University of Nottingham* and am now a student  of MAM program at the *London Business School*. In the past few years, I have had the following practical experience:
+
+* Interned as an **Operations Analyst** for China's top 2 Internet companies and Fortune 500 company *Tencent*;
+* Interned as the **Product Manager** of *NetEase*, the top 10 Internet company in China;
+* Interned as a **Strategic Product Manager** in the international technology unicorn company *DiDi*;
+* Founded a technology start-up *AllLink Ltd.* and served as **COO**.
+
+I was born in a small city in eastern China, pkease check this interactive map to see my hometown:
+
+```{r}
+library(leaflet)
+library(sf)
+
+leaflet() %>%
+  addTiles() %>%
+  setView(lng = 119.92, lat = 28.45, zoom = 7) %>%
+  addMarkers(lng = 119.92, lat = 28.45, popup = "I am here!")
+```
+
+
+If you want to know more about me, you can contact me at [My LinkedIn](https://www.linkedin.com/in/hanyuwangmam2022/);
+You can also get to know me through this [billigual interview](https://mp.weixin.qq.com/s/AL-zTh7pdJTtFPLabYSLBw) from *Nottingham University Business School*.
+
+Click [here](https://ibb.co/TgtLZDf) to check my photo.
