@@ -33,6 +33,8 @@ leaflet() %>%
 ```
 
 
+# Other tips
+
 If you want to know more about me, you can contact me at [My LinkedIn](https://www.linkedin.com/in/hanyuwangmam2022/);
 You can also get to know me through this [billigual interview](https://mp.weixin.qq.com/s/AL-zTh7pdJTtFPLabYSLBw) from *Nottingham University Business School*.
 
