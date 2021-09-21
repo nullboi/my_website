@@ -59,9 +59,9 @@ params:
   image: ''
   name: Your name
   navigation:
-    button1:
-      - name: Get Started
-        url: blogs
+    #button1:
+     # - name: Get Started
+        #url: blogs
     #button2:
       #- name: Log In
         #url: '#'
@@ -75,8 +75,8 @@ params:
       #- name: Elements
         #url: elements.html
     menu: Menu
-    subtitle: By HTML5 Up
-    title: Forty
+    subtitle: portfolio website
+    title: Hovik's
   tiles:
     enable: yes
     showcase:
@@ -93,7 +93,7 @@ params:
         title: My work
         url: blogs/hanyuwang
       - image: beer.jpg
-        subtitle: First chanllenge
+        subtitle: First challenge
         title: First R Group Project
         url: blogs/hwfirst
       - image: pic08.jpg
